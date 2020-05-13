@@ -10,8 +10,8 @@
 			ID: {{ venue.id }}
 		</p>
 		<div class="genres">
-			{% for genre in venue.genres %}
-			<span class="genre">{{ genre }}</span>
+			{% for genre in venue.genres.split(',') %}
+			<span class="genre">{{ genre | replace("{","") | replace("}","") }}</span>
 			{% endfor %}
 		</div>
 		<p>
@@ -43,6 +43,8 @@
 		{% endif %}
 	</div>
 	<div class="col-sm-6">
+		<!-- ADDED DELETE BTN HTML -->
+		<button id="delete_venue" data-id="{{venue.id}}" type="button" class="btn btn-danger">Delete Venue</button>
 		<img src="{{ venue.image_link }}" alt="Venue Image" />
 	</div>
 </div>
